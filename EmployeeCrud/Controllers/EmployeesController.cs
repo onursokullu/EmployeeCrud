@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmployeeCrud.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,11 +7,14 @@ using System.Web.Mvc;
 
 namespace EmployeeCrud.Controllers
 {
-    public class HomeController : Controller
+    public class EmployeesController : Controller
     {
+        EmployeeContext db = new EmployeeContext();
+
         public ActionResult Index()
         {
-            return View();
+            var employees = db.Employee.ToList();
+            return View(employees);
         }
 
         public ActionResult About()
