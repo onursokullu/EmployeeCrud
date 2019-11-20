@@ -2,4 +2,41 @@
 @model List<Employee>
 
 <!--This razor item called as html razor -->
-@Html.ActionLink("Create New","Create")
+@Html.ActionLink("Create New", "Create")
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            Address
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@Html.DisplayFor(x => item.Name)</td><!--You might be worried about .DisplayFor() and .DisplayNameFor()-->
+
+
+        <td>@Html.DisplayFor(x => item.Email)</td>
+        <td>@Html.DisplayFor(x => item.Phone)</td>
+        <td>@Html.DisplayFor(x => item.Address)</td>
+        <td>
+            @Html.ActionLink("Edit This", "Edit", new { id = item.EmployeeId })<!--Actionlink helper controllera veri göndermeye yarar-->
+            @Html.ActionLink("Detail", "Detail", new { id = item.EmployeeId })
+            @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeId })
+
+        </td>
+
+    </tr>
+    }
+</table>
